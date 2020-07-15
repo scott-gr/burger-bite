@@ -1,4 +1,16 @@
 const express = require("express");
 const burger = require('../models/burger');
+//creating router
+const router = express.Router();
+//main page
+router.get('/', (req, res) => {
+  burger.selectAll(data => {
+    const burgerObj = {
+      burger: data
+    };
+    res.render('index', burgerObj);
+  })
+})
 
-// 4. Create the `router` for the app, and export the `router` at the end of your file.
+
+module.exports = router;

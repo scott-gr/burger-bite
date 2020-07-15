@@ -30,6 +30,7 @@ function objToSql(ob) {
 };
 
 const orm = {
+  ///select all burgers
   selectAll: (tableChoice, cb) => {
     const burgQuery = 'SELECT * FROM' + tableChoice + ';';
     connection.query(burgQuery, function (err, res) {
@@ -38,8 +39,11 @@ const orm = {
       }
       cb(res);
     });
-  }
+  },
+  ///insert new burger
+  insertBurger: (tableChoice,)
 };
+
 
 
 module.exports = orm;

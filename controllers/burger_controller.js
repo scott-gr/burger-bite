@@ -12,15 +12,27 @@ router.get('/', (req, res) => {
     res.render('index', burgerObj);
   })
 });
-
+//insert burger
 router.post('/api/burgers', (req, res) => {
   burger.insertBurger('burger_name', req.body.name, result => {
     res.json({ id: result.insertId });
     console.log('Added ${req.body.name}! Time to eat')
   })
 });
-// insertBurger
+
 
 //updateBurger
+router.put('/api/burgers/:id', (req, res) => {
+  const id = req.params.id;
+  console.log('You devoured burger ${id}')
+  burger.updateBurger('devoured', req.body.devoured, id, result => {
+    if (result.changedRows == 0){
+      return res.status(404).end();
+    }
+    else {
+      res.status(200).end();
+    };
+  });
+});
 
 module.exports = router;

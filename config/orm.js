@@ -32,7 +32,7 @@ function objToSql(ob) {
 const orm = {
   ///select all burgers
   selectAll: (tableChoice, cb) => {
-    const burgQuery = 'SELECT * FROM' + tableChoice + ';';
+    const burgQuery = 'SELECT * FROM ' + tableChoice + ';';
     connection.query(burgQuery, function (err, res) {
       if (err) {
         throw err;
@@ -42,7 +42,7 @@ const orm = {
   },
   ///insert new burger
   insertBurger: (tableChoice, columns, values, cb) => {
-    let burgQuery = 'INSERT INTO' + tableChoice;
+    let burgQuery = 'INSERT INTO ' + tableChoice;
     burgQuery += ' (';
     burgQuery += columns.toString();
     burgQuery += ') ';
@@ -58,7 +58,7 @@ const orm = {
     }))
   },
   updateBurger:(tableChoice, objColumnValues, burgerStatus, cb) => {
-    let burgQuery = 'UPDATE' + tableChoice;
+    let burgQuery = 'UPDATE ' + tableChoice;
     burgQuery += ' SET';
     burgQuery += objToSql(objColumnValues);
     burgQuery += ' WHERE';

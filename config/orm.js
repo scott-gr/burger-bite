@@ -25,14 +25,19 @@ function objToSql(ob) {
       arr.push(key + "=" + value);
     }
   };
-
   // translate array of strings to a single comma-separated string
   return arr.toString();
 };
 
 const orm = {
-  selectAll: (table, cb) => {
-
+  selectAll: (tableChoice, cb) => {
+    const burgQuery = 'SELECT * FROM' + tableChoice + ';';
+    connection.query(burgQuery, function (err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    });
   }
 };
 

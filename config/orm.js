@@ -25,16 +25,52 @@ function objToSql(ob) {
       arr.push(key + "=" + value);
     }
   };
-
   // translate array of strings to a single comma-separated string
   return arr.toString();
 };
 
 const orm = {
-  selectAll: (table, cb) => {
-
-  }
+  ///select all burgers
+  selectAll: (tableChoice, cb) => {
+    const burgQuery = 'SELECT * FROM' + tableChoice + ';';
+    connection.query(burgQuery, function (err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    });
+  },
+  ///insert new burger
+  insertBurger: (tableChoice, columns, values, cb) => {
+    let burgQuery = 'INSERT INTO' + tableChoice;
+    burgQuery += ' (';
+    burgQuery += columns.toString();
+    burgQuery += ') ';
+    burgQuery += 'VALUES (';
+    burgQuery += printQuestionMarks(values.length);
+    burgQuery += ') ';
+    console.log(burgQuery);
+    connection.query(burgQuery, values, (err, res => {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    }))
+  },
+  updateBurger:(tableChoice, objColumnValues, burgerStatus, cb) => {
+    let burgQuery = 'UPDATE' + tableChoice;
+    burgQuery += ' SET';
+    burgQuery += objToSql(objColumnValues);
+    burgQuery += ' WHERE';
+    burgQuery += burgerStatus;
+    console.log(burgQuery);
+    connection.query(burgQuery, (err, res) => {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    });
+  },
 };
-
-
+//export orm to burger.js
 module.exports = orm;

@@ -81,7 +81,7 @@ Having an active and healthy commit history on GitHub is important for your futu
 4. Run the `schema.sql` and `seeds.sql` files into the mysql server from the command line
 
 5. Now you're going to run these SQL files.
-
+my
    * Make sure you're in the `db` folder of your app.
 
    * Start MySQL command line tool and login: `mysql -u root -p`.

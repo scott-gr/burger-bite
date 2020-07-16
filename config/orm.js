@@ -31,8 +31,8 @@ function objToSql(ob) {
 
 const orm = {
   ///select all burgers
-  selectAll: (tableChoice, cb) => {
-    const burgQuery = 'SELECT * FROM ' + tableChoice + ';';
+  selectAll: (table, cb) => {
+    const burgQuery = 'SELECT * FROM ' + table+ ';';
     connection.query(burgQuery, function (err, res) {
       if (err) {
         throw err;
@@ -41,34 +41,34 @@ const orm = {
     });
   },
   ///insert new burger
-  insertBurger: (tableChoice, columns, values, cb) => {
-    let burgQuery = 'INSERT INTO ' + tableChoice;
+  insertBurger: (table, column, value, cb) => {
+    let burgQuery = 'INSERT INTO ' + table;
     burgQuery += ' (';
-    burgQuery += columns.toString();
+    burgQuery += column.toString();
     burgQuery += ') ';
     burgQuery += 'VALUES (';
-    burgQuery += printQuestionMarks(values.length);
+    burgQuery += printQuestionMarks(value.length);
     burgQuery += ') ';
     console.log(burgQuery);
-    connection.query(burgQuery, values, (err, res => {
+    connection.query(burgQuery, value, (err, result => {
       if (err) {
         throw err;
       }
-      cb(res);
+      cb(result);
     }))
   },
-  updateBurger:(tableChoice, objColumnValues, burgerStatus, cb) => {
-    let burgQuery = 'UPDATE ' + tableChoice;
+  updateBurger:(table, objColumnValues, burgerStatus, cb) => {
+    let burgQuery = 'UPDATE ' + table;
     burgQuery += ' SET';
     burgQuery += objToSql(objColumnValues);
     burgQuery += ' WHERE';
     burgQuery += burgerStatus;
     console.log(burgQuery);
-    connection.query(burgQuery, (err, res) => {
+    connection.query(burgQuery, (err, result) => {
       if (err) {
         throw err;
       }
-      cb(res);
+      cb(result);
     });
   },
 };

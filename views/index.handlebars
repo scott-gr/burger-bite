@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <img src="/public/assets/burger_art.png" id="burger-art">
+    <img src="/public/assets/images/burger_art.png" alt="burger">
   </div>
 </header>
 <main class="container">
@@ -16,14 +16,33 @@
     <div class="col-sm-6">
       <h2>Your burger is served!</h2>
       <ul>
-
+        {{#each burgers}}
+        {{#unless devoured}}
+        {{> burgers/burger-box devour=true}}
+        {{/unless}}
+        {{/each}}
       </ul>
     </div>
     <div class="col-sm-6">
       <h2>Clear the table, I'm stuffed.</h2>
       <ul>
-
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burgers/burger-block devour=false}}
+        {{/if}}
+        {{/each}}
       </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h4>Add New Burger</h4>
+      <form class="create-form">
+        <div class="form-group">
+          <label for="added">Burger Name:</label>
+          <input type="text" id="added" name="burger_name">
+        </div>
+      </form>
     </div>
   </div>
 </main>

@@ -47,17 +47,11 @@ const orm = {
       cb(result);
     });
   },
-  updateBurger:(table, objColumnValues, burgerStatus, cb) => {
-    let burgQuery = 'UPDATE ' + table;
-    burgQuery += ' SET';
-    burgQuery += objToSql(objColumnValues);
-    burgQuery += ' WHERE';
-    burgQuery += burgerStatus;
+  updateBurger:(table, column, value, burgerStatus, cb) => {
+    let burgQuery = 'UPDATE ?? SET ?? = ? WHERE burgerStatus = ?';
     console.log(burgQuery);
-    connection.query(burgQuery, (err, result) => {
-      if (err) {
-        throw err;
-      }
+    connection.query(burgQuery, [table, column, value, burgerStatus], (err, result) => {
+      if (err) throw err;
       cb(result);
     });
   },

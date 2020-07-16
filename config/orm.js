@@ -32,30 +32,20 @@ function objToSql(ob) {
 const orm = {
   ///select all burgers
   selectAll: (table, cb) => {
-    const burgQuery = 'SELECT * FROM ' + table+ ';';
-    connection.query(burgQuery, function (err, res) {
-      if (err) {
-        throw err;
-      }
-      cb(res);
+    const burgQuery = 'SELECT * FROM ??';
+    connection.query(burgQuery, [table], (err, result) => {
+      if (err) throw err;
+      cb(result);
     });
   },
   ///insert new burger
   insertBurger: (table, column, value, cb) => {
-    let burgQuery = 'INSERT INTO ' + table;
-    burgQuery += ' (';
-    burgQuery += column.toString();
-    burgQuery += ') ';
-    burgQuery += 'VALUES (';
-    burgQuery += printQuestionMarks(value.length);
-    burgQuery += ') ';
+    let burgQuery = 'INSERT INTO ?? (??) VALUES(?)';
     console.log(burgQuery);
-    connection.query(burgQuery, value, (err, result => {
-      if (err) {
-        throw err;
-      }
+    connection.query(burgQuery, [table, column, value], (err, result) => {
+      if (err) throw err
       cb(result);
-    }))
+    });
   },
   updateBurger:(table, objColumnValues, burgerStatus, cb) => {
     let burgQuery = 'UPDATE ' + table;

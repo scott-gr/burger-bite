@@ -1,57 +1,27 @@
 {{!-- * Setup the `index.handlebars` to have the template that Handlebars can render onto. --}}
 
 {{!-- * Create a button in `index.handlebars` that will submit the user input into the database. --}}
-<header class="container">
-  <div class="row justify-content-center mx-auto mb-4 mt-4">
-    <div class="col-sm">
-      <h1>Eat da Burger!</h1>
+<div class="container">
+    <h1>Eat-Da-Burger!</h1>
+    <div id="sections">
+        <h3>To be eaten:</h3>
+        <div></div>
+        <div></div>
+        <h3>Devoured:</h3>
     </div>
-  </div>
-  <div class="row">
-    <img src="/public/assets/images/burger_art.png" alt="burger">
-  </div>
-</header>
-<main class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <h2>Your burger is served!</h2>
-      <ul>
-        {{#each burgers}}
-        {{#unless devoured}}
-        {{> burgers/burger-box devour=true}}
-        {{/unless}}
+    <ul>
+        {{#each burger}}
+            <li {{#if devoured}}class="devouredClass"{{else}}class="burgerClass"{{/if}} data-devoured="{{devoured}}">
+                <div class="burgerItem">{{id}}. {{burger_name}}</div>
+                {{#if devoured}}<div class="burgPlaceholder"></div>{{else}}<button  data-id="{{id}}" class="devourBtn">Chomp!</button>{{/if}}
+                <div class="placeholder"></div>
+            </li>
         {{/each}}
-      </ul>
-    </div>
-    <div class="col-sm-6">
-      <h2>Clear the table, I'm stuffed.</h2>
-      <ul>
-        {{#each burgers}}
-        {{#if devoured}}
-        {{> burgers/burger-block devour=false}}
-        {{/if}}
-        {{/each}}
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <h4>Add New Burger</h4>
-      <form class="create-form">
-        <div class="form-group">
-          <label for="added">Burger Name:</label>
-          <input type="text" id="added" name="burger_name">
-        </div>
-
-        <div class="form-group">
-          <label for="eatq">Did you eat this?</label>
-          <br>
-          <input type="radio" name="devoured" value="1" checked> Yup, I ate this burger already!
-          <br>
-          <input type="radio" name="devoured" value="0"> I haven't eaten this one...
-        </div>
-        <button type="submit">Add Burger</button>
-      </form>
-    </div>
-  </div>
-</main>
+    </ul>
+</div>
+<form>
+    <input type="text-area" id="addBurger" name="name" /> 
+    <br>
+    <button type="submit" id ="submitBurger">Add new Burger</button>
+</form>
+<p>Enter a burger you wanna eat and click "Add new Burger" button.</p>

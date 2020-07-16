@@ -1,0 +1,2 @@
+$(() => {
+  $("#submitBurger").on("click", event => {

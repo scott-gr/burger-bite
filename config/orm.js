@@ -40,7 +40,7 @@ const orm = {
   },
   ///insert new burger
   insertBurger: (table, column, value, cb) => {
-    let burgQuery = 'INSERT INTO ?? (??) VALUES(?)';
+    let burgQuery = 'INSERT INTO (??) (??) VALUES(?)';
     console.log(burgQuery);
     connection.query(burgQuery, [table, column, value], (err, result) => {
       if (err) throw err
@@ -48,7 +48,7 @@ const orm = {
     });
   },
   updateBurger:(table, column, value, burgerStatus, cb) => {
-    let burgQuery = 'UPDATE ?? SET ?? = ? WHERE burgerStatus = ?';
+    let burgQuery = 'UPDATE (??) SET (??) = (?) WHERE burgerStatus = (?)';
     console.log(burgQuery);
     connection.query(burgQuery, [table, column, value, burgerStatus], (err, result) => {
       if (err) throw err;

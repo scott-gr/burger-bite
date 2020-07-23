@@ -1,25 +1,30 @@
 # burger-bite
-
+  <img src="https://img.shields.io/badge/license-MIT License-blue"/>
+  
 ## Table of Contents
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Demo](#demo)
 * [Contributors](#contributors)
 * [License](#license)
 * [Questions](#questions)
 
 ## Description
-A fun application to log burgers that you'd like to eat and click a big button to eat them! Utilizes handlebars, sql, and nodejs.
+Burger-Bite is a fun, full-stack application to track (and devour) burgers. It uses a mySQL databases for storing user input, and AJAX and jQuery to send requests to the express.js server.
 
 ## Installation
+Clone github repo and run `npm install`, OR open app in Heroku.
 
+If you clones repo, run npm install to install dependencies, and node server.js to start the server. Navigate to localhost:8080 in your browser.
 
 ## Usage
+1. Add a burger by entering it in the text box. Click "
 
 
 ## Contributors
-I, Scott Griffin, am the sole programmer on this project. Idea and examples from Trilogy and GT Bootcamp. 
+I am the sole contributor to developing this project. 
+
+App concept from Trilogy GT Bootcamp. Bootstrap CSS Library, Express, Handlebars, and MySQL packages were utilized.
 
 ## License
 MIT License

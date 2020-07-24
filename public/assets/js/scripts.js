@@ -2,7 +2,7 @@ $(() => {
   $('#submitBtn').on('click', (event) => {
     event.preventDefault();
     const newBurger = {
-      name: $('#burgerEnter').val().trim(),
+      name: $('burger_name').val(),
       devoured: false,
     };
     $.ajax('/api/burgers', {

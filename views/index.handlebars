@@ -3,20 +3,21 @@
   <div id= "options">
     <h4>Your burger is served!</h4>
     <div></div>
+    <div></div>
     <h4>You Devoured it!</h4>
   </div>
   <ul>
     {{#each burger}}
       <li {{#if devoured}}class="devouredBurgers"{{else}}class="burgerRow"{{/if}} data-devoured="{{devoured}}">
         <div class="burgerListItem">{{id}}. {{burger_name}}</div>
-        {{#if devoured}}<div class="placeholder"></div>{{else}}<button  data-id="{{id}}" class="devourBtn">Eat it now!</button>{{/if}}
+        {{#if devoured}}<div class="placeholder"></div>{{else}}<button data-id="{{id}}" class="devourBtn">Eat it now!</button>{{/if}}
         <div class="placeholder"></div>
       </li>
     {{/each}}
   </ul>
 </div>
 <form>
-  <input type="text-area" id="burgerEnter" name="burger_name" /> 
+  <input type="text-area" id="burgerEnter" name="burger_name"/> 
   <br>
   <button type="submit" id ="submitBtn">Add Burger</button>
 </form>

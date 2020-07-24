@@ -7,3 +7,10 @@ CREATE TABLE burgers(
   devoured BOOLEAN DEFAULT false,
   PRIMARY KEY (id)
 );
+
+CREATE TABLE burgers_db (
+  id INT NOT NULL AUTO_INCREMENT,
+  burger_name VARCHAR(100),
+  createdAt TIMESTAMP NOT NULL,
+  PRIMARY KEY(id)
+);

@@ -13,12 +13,12 @@
 Burger-Bite is a fun, full-stack application to track (and devour) burgers. It uses a mySQL databases for storing user input, and AJAX and jQuery to send requests to the express.js server.
 
 ## Installation
-Clone github repo and run `npm install`, OR open app in Heroku.
+Clone github repo and run `npm install`, OR open app in Heroku: https://pure-waters-56801.herokuapp.com/ 
 
-If you clones repo, run npm install to install dependencies, and node server.js to start the server. Navigate to localhost:8080 in your browser.
+If you cloned repo, run npm install to install dependencies, and node server.js to start the server. Navigate to localhost:8080 in your browser.
 
 ## Usage
-1. Add a burger by entering it in the text box. Click "
+1. Add a burger by entering it in the text box. Click the "Eat it Now!' button to consume your burger.
 
 
 ## Contributors
